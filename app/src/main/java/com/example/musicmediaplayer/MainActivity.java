@@ -116,7 +116,9 @@ public class MainActivity extends AppCompatActivity {
         );
 
         seekBar.setProgress((int)startTime);
-        handler.postDelayed(UpdateSongTime, 100);
+
+        Handler handler1 = new Handler();
+        handler1.postDelayed(UpdateSongTime, 100);
     }
 
     //Creating the Runnable
@@ -131,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
             );
 
             seekBar.setProgress((int)startTime);
-            handler.postDelayed(this, 100);
+
+            Handler handler1 = new Handler();
+            handler1.postDelayed(this, 100);
         }
     };
 }
