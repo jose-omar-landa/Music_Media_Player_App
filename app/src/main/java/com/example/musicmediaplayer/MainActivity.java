@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     //Widgets
-    Button forward_button, rewind_button, play_button, pause_button;
+    Button forward_button, rewind_button, play_button, pause_button, restart_button;
     TextView time_text, title_text;
     SeekBar seekBar;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         pause_button = findViewById(R.id.pause_btn);
         rewind_button = findViewById(R.id.rewind_btn);
         forward_button = findViewById(R.id.forward_btn);
+        restart_button = findViewById(R.id.restart_btn);
 
         title_text = findViewById(R.id.song_title);
         time_text = findViewById(R.id.time_left);
@@ -93,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Error! Can't jump backwards!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        restart_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
             }
         });
 
